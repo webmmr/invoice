@@ -2,7 +2,7 @@ import Button from "./Button";
 import Plus from "../assets/icon-plus.svg";
 import { getInvoices } from "../services/apiInvoices";
 import { useLoaderData } from "react-router-dom";
-import Invoice from "./Invoice";
+import SingleInvoice from "./SingleInvoice";
 
 function Invoices() {
   const invoices = useLoaderData();
@@ -25,7 +25,7 @@ function Invoices() {
       </header>
       <section>
         {invoices.map((invoice) => (
-          <Invoice invoice={invoice} key={invoice.id} />
+          <SingleInvoice invoice={invoice} key={invoice.id} />
         ))}
       </section>
     </>

@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
 import Invoices, { loader as invoicesLoader } from "./ui/Invoices";
+import InvoiceDetail from "./ui/InvoiceDetail";
 
 const router = createBrowserRouter([
   {
@@ -9,6 +10,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Invoices />,
+        loader: invoicesLoader,
+      },
+      {
+        path: "/invoices/:id",
+        element: <InvoiceDetail />,
         loader: invoicesLoader,
       },
     ],
