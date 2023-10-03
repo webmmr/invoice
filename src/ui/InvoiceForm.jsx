@@ -1,8 +1,9 @@
 import { useState } from "react";
 import AddItems from "./AddItems";
+import Button from "./Button";
 
 function InvoiceForm() {
-  // const [items, setItems] = useState({});
+  const [invoiceInfo, setInvoiceInfo] = useState({});
   const [items, setItems] = useState([
     {
       itemName: "",
@@ -11,6 +12,20 @@ function InvoiceForm() {
       total: 0,
     },
   ]);
+
+  function resetForm() {
+    setItems([
+      {
+        itemName: "",
+        quantity: "",
+        price: "",
+        total: 0,
+      },
+    ]);
+  }
+
+  function handleSubmitDraft() {}
+  function handleSubmit() {}
 
   return (
     <section className="p-10">
@@ -188,63 +203,21 @@ function InvoiceForm() {
         <div className="flex flex-col">
           <h4 className="text-lg text-skyBlue font-bold mb-5">Items List</h4>
 
-          {/* {addTask && (
-            <div id="items" className="">
-              <div
-                id="heading"
-                className="flex justify-between items-center mb-3"
-              >
-                <div className="basis-[40%]">Item Name</div>
-                <div className="basis-[10%]">QTY.</div>
-                <div className="basis-[20%]">Price</div>
-                <div className="basis-[20%]">Total</div>
-                <div></div>
-              </div>
-              <div className="flex justify-between items-center mb-3">
-                <div className="basis-[40%]">
-                  <input
-                    type="text"
-                    id="itemName"
-                    placeholder="Front End Development"
-                    className="border rounded-lg py-3 px-4 border-lightAsh hover:border-brand active:border-brand w-full"
-                  />
-                </div>
-                <div className="basis-[10%]">
-                  <input
-                    type="number"
-                    id="quantity"
-                    placeholder="1"
-                    className="border rounded-lg py-3 px-4 border-lightAsh hover:border-brand active:border-brand w-full"
-                  />
-                </div>
-                <div className="basis-[20%]">
-                  <input
-                    type="number"
-                    id="price"
-                    placeholder="135"
-                    className="border rounded-lg py-3 px-4 border-lightAsh hover:border-brand active:border-brand w-full"
-                  />
-                </div>
-                <div className="basis-[20%]">135</div>
-                <div>
-                  <img src={iconDelete} alt="X" />
-                </div>
-              </div>
-            </div>
-          )}
-          <Button
-            variation="ghost"
-            className="mt-5"
-            onClick={() => setAddTask(true)}
-          >
-            <span>
-              <img src={iconPlus} alt="+" className="mr-2" />
-            </span>
-            Add New Item
-          </Button> */}
           <AddItems items={items} setItems={setItems} />
-          {/* <RepeaterField /> */}
         </div>
+        <section className="bg-white p-8 shadow-normal rounded-lg flex justify-between mb-14">
+          <Button variation="ghost" onClick={resetForm}>
+            Discard
+          </Button>
+          <div id="actions" className="flex items-center justify-end gap-5">
+            <Button variation="draft" onClick={handleSubmitDraft}>
+              Save as Draft
+            </Button>
+            <Button variation="primary" onClick={handleSubmit}>
+              Save & Send
+            </Button>
+          </div>
+        </section>
       </div>
     </section>
   );
