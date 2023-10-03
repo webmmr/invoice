@@ -1,7 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
-import Invoices, { loader as invoicesLoader } from "./ui/Invoices";
+import Invoices from "./ui/Invoices";
 import InvoiceDetail from "./ui/InvoiceDetail";
+import { loader as invoicesLoader } from "./ui/AppLayout";
 
 const router = createBrowserRouter([
   {

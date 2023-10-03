@@ -6,6 +6,7 @@ export default {
       brand: "#7c5dfa",
       accent: "#9277ff",
       darkBlue: "#1e2139",
+      lightGray: "#F9FAFE",
       lightBlue: "#252945",
       lightAsh: "#dfe3fa",
       darkAsh: "#888eb0",

@@ -1,23 +1,16 @@
-import {
-  Link,
-  Navigate,
-  useLoaderData,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 
 import Status from "./Status";
 import Button from "./Button";
 import InvoiceItem from "./InvoiceItem";
 import { formatCurrency } from "../utils/helpers";
+import InvoiceForm from "./InvoiceForm";
 
 function InvoiceDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const invoice = useLoaderData().filter((item) => item.id === id);
-
-  console.log(invoice);
 
   const {
     clientAddress,
@@ -49,8 +42,8 @@ function InvoiceDetail() {
 
   return (
     <>
-      <div id="back">
-        <Link to={navigate(-1)}>Go Back</Link>
+      <div id="back" className="mb-6 py-2">
+        <Button onClick={() => navigate(-1)}>Go Back</Button>
       </div>
       <section className="bg-white p-8 shadow-normal rounded-lg flex justify-between mb-14">
         <div id="status" className="flex items-center">
@@ -58,9 +51,9 @@ function InvoiceDetail() {
           <Status status={status} />
         </div>
         <div id="actions" className="flex items-center justify-end gap-5">
-          <Button type="ghost">Edit</Button>
-          <Button type="danger">Delete</Button>
-          <Button type="primary">Mark as Paid</Button>
+          <Button variation="ghost">Edit</Button>
+          <Button variation="danger">Delete</Button>
+          <Button variation="primary">Mark as Paid</Button>
         </div>
       </section>
       <section className="bg-white p-20 shadow-normal rounded-lg">
@@ -121,6 +114,7 @@ function InvoiceDetail() {
             {formatCurrency(total)}
           </h2>
         </div>
+        <InvoiceForm />
       </section>
     </>
   );

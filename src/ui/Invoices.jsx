@@ -1,6 +1,6 @@
 import Button from "./Button";
 import Plus from "../assets/icon-plus.svg";
-import { getInvoices } from "../services/apiInvoices";
+
 import { useLoaderData } from "react-router-dom";
 import SingleInvoice from "./SingleInvoice";
 
@@ -14,7 +14,7 @@ function Invoices() {
           <h1 className="text-lg font-bold ">Invoices</h1>
           <p className="text-darkAsh font-medium">There are 7 total invoices</p>
         </div>
-        <Button type="primary">
+        <Button variation="primary">
           <img
             src={Plus}
             alt="Create"
@@ -33,9 +33,3 @@ function Invoices() {
 }
 
 export default Invoices;
-
-export async function loader() {
-  const invoices = await getInvoices();
-
-  return invoices;
-}

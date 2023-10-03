@@ -1,6 +1,7 @@
 import { Outlet, useNavigation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Spinner from "./Spinner";
+import { getInvoices } from "../services/apiInvoices";
 
 function AppLayout() {
   const navigation = useNavigation();
@@ -23,3 +24,9 @@ function AppLayout() {
 }
 
 export default AppLayout;
+
+export async function loader() {
+  const invoices = await getInvoices();
+
+  return invoices;
+}
